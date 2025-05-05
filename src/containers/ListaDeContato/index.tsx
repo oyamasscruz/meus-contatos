@@ -1,20 +1,10 @@
-import Container, {
-  Botoes,
-  BotaoEditar,
-  BotaoSalvar,
-  Email,
-  Form,
-  Nome,
-  Numero
-} from './style'
+import Contato from '../../components/Contato'
+import Container, { Email, Form, Nome, Numero } from './style'
 
 const CardContato = () => {
   return (
     <Container>
-      <Botoes>
-        <BotaoEditar>Editar</BotaoEditar>
-        <BotaoSalvar>Salvar</BotaoSalvar>
-      </Botoes>
+      <Contato />
       <Nome>Danielle Cantidio</Nome>
       <Numero>
         <p>+62982134202</p>

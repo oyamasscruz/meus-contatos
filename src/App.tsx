@@ -1,6 +1,6 @@
 import EstiloGlobal, { Container } from './styles'
 import BarraLateral from './containers/BarraLateral'
-import CardContato from './containers/CardContato'
+import ListaDeContato from './containers/ListaDeContato'
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <EstiloGlobal />
       <Container>
         <BarraLateral />
-        <CardContato />
+        <ListaDeContato />
       </Container>
     </>
   )
