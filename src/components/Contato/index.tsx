@@ -1,35 +1,50 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import {
   BotaoCancelar,
   BotaoEditar,
   BotaoSalvar,
   BotaoVoltar,
-  Botoes
+  Botoes,
+  Nome
 } from './style'
 
-const Contato = () => {
+type Props = {
+  name: string
+}
+
+const Contato = ({ name }: Props) => {
   const [estaEditando, setEstaEditando] = useState(false)
+  const [editandoTexto, setEditandoTexto] = useState(name)
   const cancelaEdicao = () => {
     setEstaEditando(false)
   }
+  function mostraTexto(evento: ChangeEvent<HTMLInputElement>) {
+    setEditandoTexto(evento.target.value)
+  }
   return (
-    <Botoes>
+    <>
       {estaEditando ? (
         <>
-          <BotaoCancelar onClick={() => cancelaEdicao()}>
-            Cancelar
-          </BotaoCancelar>
-          <BotaoSalvar>Salvar</BotaoSalvar>
+          <Botoes>
+            <BotaoCancelar onClick={() => cancelaEdicao()}>
+              Cancelar
+            </BotaoCancelar>
+            <BotaoSalvar>Salvar</BotaoSalvar>
+          </Botoes>
+          <Nome type="text" value={editandoTexto} onChange={mostraTexto} />
         </>
       ) : (
         <>
-          <BotaoVoltar>&lt;</BotaoVoltar>
-          <BotaoEditar onClick={() => setEstaEditando(true)}>
-            Editar
-          </BotaoEditar>
+          <Botoes>
+            <BotaoVoltar>&lt;</BotaoVoltar>
+            <BotaoEditar onClick={() => setEstaEditando(true)}>
+              Editar
+            </BotaoEditar>
+          </Botoes>
+          <Nome type="text" value={editandoTexto} readOnly />
         </>
       )}
-    </Botoes>
+    </>
   )
 }
 

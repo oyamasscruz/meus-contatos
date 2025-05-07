@@ -10,23 +10,20 @@ const Container = styled.section`
   align-items: center;
 `
 
-export const Nome = styled.div`
+export const Numero = styled.div`
   font-weight: bold;
   font-size: 32px;
   margin-top: 16px;
   padding: 8px;
   border-radius: 8px;
-`
-
-export const Numero = styled(Nome)`
   font-weight: light;
   font-size: 16px;
 `
-export const Email = styled(Nome)`
+export const Email = styled(Numero)`
   font-size: 16px;
   font-weight: light;
 `
-export const Form = styled(Nome)`
+export const Form = styled(Numero)`
   font-size: 16px;
   font-weight: light;
 `

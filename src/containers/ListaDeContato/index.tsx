@@ -1,11 +1,10 @@
 import Contato from '../../components/Contato'
-import Container, { Email, Form, Nome, Numero } from './style'
+import Container, { Email, Form, Numero } from './style'
 
 const CardContato = () => {
   return (
     <Container>
-      <Contato />
-      <Nome>Danielle Cantidio</Nome>
+      <Contato name="Danielle Cantidio" />
       <Numero>
         <p>+62982134202</p>
       </Numero>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import variaveis from '../../styles/variaveis'
 
 const Container = styled.aside`
   margin-top: 16px;
@@ -12,12 +13,12 @@ const Container = styled.aside`
 export const CardPessoal = styled.div`
   padding: 16px;
   border: 2px solid white;
-  background-color: rgba(93, 119, 89, 0.6);
+  background-color: ${variaveis.corPessoal};
   cursor: pointer;
   border-radius: 6px;
 `
 export const CardFamilia = styled.div`
-  background-color: rgba(59, 39, 84, 0.7);
+  background-color: ${variaveis.corFamilia};
   padding: 16px;
   border: 2px solid white;
   cursor: pointer;
@@ -25,7 +26,7 @@ export const CardFamilia = styled.div`
 `
 export const CardTrabalho = styled.div`
   padding: 16px;
-  background-color: rgba(114, 137, 184, 0.8);
+  background-color: ${variaveis.corTrabalho};
   border: 2px solid white;
   cursor: pointer;
   border-radius: 6px;
