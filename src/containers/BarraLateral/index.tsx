@@ -1,31 +1,24 @@
-import Container, {
-  CardPessoal,
-  CardFamilia,
-  CardTrabalho,
-  NomeContato
-} from './style'
+import { useDispatch, useSelector } from 'react-redux'
+import Container, { BotaoComCor } from './style'
+import { RootReducer } from '../../store'
+import { editar, selecionarContato } from '../../store/reducers/contato'
 
 const BarraLateral = () => {
+  const { itens } = useSelector((state: RootReducer) => state.contato)
+  const dispatch = useDispatch()
+  const contatos = itens
   return (
     <Container>
-      <CardFamilia>
-        <NomeContato>Azélia Soares</NomeContato>
-      </CardFamilia>
-      <CardFamilia>
-        <NomeContato>Danielle Cantidio</NomeContato>
-      </CardFamilia>
-      <CardTrabalho>
-        <NomeContato>Carlos Luneta</NomeContato>
-      </CardTrabalho>
-      <CardPessoal>
-        <NomeContato>Jhonny Bravo</NomeContato>
-      </CardPessoal>
-      <CardPessoal>
-        <NomeContato>Murilo Pires</NomeContato>
-      </CardPessoal>
-      <CardTrabalho>
-        <NomeContato>Denise Fragoso</NomeContato>
-      </CardTrabalho>
+      {contatos.map((t) => (
+        <BotaoComCor
+          onClick={() => dispatch(selecionarContato(t.id))}
+          parametro="modo"
+          tipo={t.tipo}
+          key={t.tipo}
+        >
+          {t.nome}
+        </BotaoComCor>
+      ))}
     </Container>
   )
 }

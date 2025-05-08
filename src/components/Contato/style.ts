@@ -1,4 +1,20 @@
 import { styled } from 'styled-components'
+import * as enums from '../../utils/enums/Contato'
+import variaveis from '../../styles/variaveis'
+
+type TagProps = {
+  tipo: enums.Tipo
+  parametro: 'modo'
+}
+
+function mudaCorDeFundo(props: TagProps): string {
+  if (props.parametro === 'modo') {
+    if (props.tipo === enums.Tipo.FAMILIA) return variaveis.corFamilia
+    if (props.tipo === enums.Tipo.PESSOAL) return variaveis.corPessoal
+    if (props.tipo === enums.Tipo.TRABALHO) return variaveis.corTrabalho
+  }
+  return variaveis.preto
+}
 
 export const Botoes = styled.div`
   margin-top: 16px;
@@ -23,6 +39,10 @@ export const BotaoVoltar = styled(BotaoEditar)`
   display: flex;
   align-items: center;
   justify-content: center;
+`
+
+export const Tipo = styled.span<TagProps>`
+  background-color: ${(props) => mudaCorDeFundo(props)};
 `
 
 export const BotaoSalvar = styled(BotaoEditar)`

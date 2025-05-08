@@ -1,25 +1,29 @@
+import { useSelector } from 'react-redux'
 import Contato from '../../components/Contato'
-import Container, { Email, Form, Numero } from './style'
+import { RootReducer } from '../../store'
+import Container, { Linha } from './style'
 
 const CardContato = () => {
+  const { itens, contatoSelecionado } = useSelector(
+    (state: RootReducer) => state.contato
+  )
+  const contatoSelecionadoId = itens.find((c) => c.id === contatoSelecionado)
   return (
-    <Container>
-      <Contato name="Danielle Cantidio" />
-      <Numero>
-        <p>+62982134202</p>
-      </Numero>
-      <Email>
-        <p>daniellecantidio@gmail.com</p>
-      </Email>
-      <Form>
-        <input type="checkbox" />
-        <label htmlFor="">Família</label>
-        <input type="checkbox" />
-        <label htmlFor="">Pessoal</label>
-        <input type="checkbox" />
-        <label htmlFor="">Trabalho</label>
-      </Form>
-    </Container>
+    <>
+      <Container>
+        <ul>
+          {contatoSelecionadoId && (
+            <Linha
+              parametro="modo"
+              tipo={contatoSelecionadoId.tipo}
+              key={contatoSelecionadoId?.id}
+            >
+              <Contato {...contatoSelecionadoId} />
+            </Linha>
+          )}
+        </ul>
+      </Container>
+    </>
   )
 }
 

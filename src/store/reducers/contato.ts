@@ -4,6 +4,7 @@ import * as enums from '../../utils/enums/Contato'
 
 type ContatoState = {
   itens: Contato[]
+  contatoSelecionado: number | null
 }
 
 const initialState: ContatoState = {
@@ -35,8 +36,23 @@ const initialState: ContatoState = {
       telefone: 62982132222,
       email: 'george@gmail.com',
       tipo: enums.Tipo.PESSOAL
+    },
+    {
+      id: 5,
+      nome: 'Murilo Nico',
+      telefone: 62982132222,
+      email: 'george@gmail.com',
+      tipo: enums.Tipo.PESSOAL
+    },
+    {
+      id: 6,
+      nome: 'Priscilla Nico',
+      telefone: 62982132222,
+      email: 'george@gmail.com',
+      tipo: enums.Tipo.TRABALHO
     }
-  ]
+  ],
+  contatoSelecionado: null
 }
 
 const contatoSlice = createSlice({
@@ -50,8 +66,15 @@ const contatoSlice = createSlice({
       if (indexDoContato >= 0) {
         state.itens[indexDoContato] = action.payload
       }
+    },
+    selecionarContato: (state, action: PayloadAction<number>) => {
+      state.contatoSelecionado = action.payload
+    },
+    limparContatoSelecionado: (state) => {
+      state.contatoSelecionado = null
     }
   }
 })
-export const { editar } = contatoSlice.actions
+export const { editar, selecionarContato, limparContatoSelecionado } =
+  contatoSlice.actions
 export default contatoSlice.reducer

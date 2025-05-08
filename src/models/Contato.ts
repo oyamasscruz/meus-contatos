@@ -14,11 +14,11 @@ class Contato {
     email: string,
     tipo: enums.Tipo
   ) {
-    ;(this.id = id),
-      (this.nome = nome),
-      (this.telefone = telefone),
-      (this.email = email),
-      (this.tipo = tipo)
+    this.id = id
+    this.nome = nome
+    this.telefone = telefone
+    this.email = email
+    this.tipo = tipo
   }
 }
 

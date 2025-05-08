@@ -1,50 +1,26 @@
-import { ChangeEvent, useState } from 'react'
-import {
-  BotaoCancelar,
-  BotaoEditar,
-  BotaoSalvar,
-  BotaoVoltar,
-  Botoes,
-  Nome
-} from './style'
+import { Tipo } from './style'
+import ContatoState from '../../models/Contato'
 
-type Props = {
-  name: string
-}
+type Props = ContatoState
 
-const Contato = ({ name }: Props) => {
-  const [estaEditando, setEstaEditando] = useState(false)
-  const [editandoTexto, setEditandoTexto] = useState(name)
-  const cancelaEdicao = () => {
-    setEstaEditando(false)
-  }
-  function mostraTexto(evento: ChangeEvent<HTMLInputElement>) {
-    setEditandoTexto(evento.target.value)
-  }
+const Contato = ({ id, nome, telefone, email, tipo }: Props) => {
   return (
-    <>
-      {estaEditando ? (
-        <>
-          <Botoes>
-            <BotaoCancelar onClick={() => cancelaEdicao()}>
-              Cancelar
-            </BotaoCancelar>
-            <BotaoSalvar>Salvar</BotaoSalvar>
-          </Botoes>
-          <Nome type="text" value={editandoTexto} onChange={mostraTexto} />
-        </>
-      ) : (
-        <>
-          <Botoes>
-            <BotaoVoltar>&lt;</BotaoVoltar>
-            <BotaoEditar onClick={() => setEstaEditando(true)}>
-              Editar
-            </BotaoEditar>
-          </Botoes>
-          <Nome type="text" value={editandoTexto} readOnly />
-        </>
-      )}
-    </>
+    <div>
+      <label htmlFor={nome}>
+        <input type="text" value={nome} />
+      </label>
+      <label>
+        <input value={telefone} />
+      </label>
+      <label htmlFor={email}>
+        <input type="text" id={email} value={email} />
+      </label>
+      <label htmlFor={tipo}>
+        <Tipo parametro="modo" tipo={tipo}>
+          {tipo}
+        </Tipo>
+      </label>
+    </div>
   )
 }
 

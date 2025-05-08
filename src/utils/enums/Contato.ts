@@ -1,5 +1,5 @@
 export enum Tipo {
-  FAMILIA = 'Família',
-  PESSOAL = 'Pessoal',
-  TRABALHO = 'Trabalho'
+  FAMILIA = 'FAMILIA',
+  PESSOAL = 'PESSOAL',
+  TRABALHO = 'TRABALHO'
 }
