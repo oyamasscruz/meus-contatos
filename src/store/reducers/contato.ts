@@ -11,14 +11,14 @@ const initialState: ContatoState = {
   itens: [
     {
       id: 1,
-      nome: 'Danielle Cantidio',
-      telefone: 62992113288,
+      nome: 'Danielle Candido',
+      telefone: 6299998888,
       email: 'oyamasscruz@gmail.com',
       tipo: enums.Tipo.FAMILIA
     },
     {
       id: 2,
-      nome: 'Azélia Soares',
+      nome: 'Azélia Candido',
       telefone: 62992113200,
       email: 'azelia@gmail.com',
       tipo: enums.Tipo.FAMILIA
@@ -26,21 +26,21 @@ const initialState: ContatoState = {
     {
       id: 3,
       nome: 'George Bruno',
-      telefone: 62992112222,
+      telefone: 62992112142,
       email: 'george@gmail.com',
       tipo: enums.Tipo.TRABALHO
     },
     {
       id: 4,
       nome: 'Lucas Bernardo',
-      telefone: 62982132222,
+      telefone: 62981132222,
       email: 'george@gmail.com',
       tipo: enums.Tipo.PESSOAL
     },
     {
       id: 5,
       nome: 'Murilo Nico',
-      telefone: 62982132222,
+      telefone: 62982252222,
       email: 'george@gmail.com',
       tipo: enums.Tipo.PESSOAL
     },
@@ -50,6 +50,20 @@ const initialState: ContatoState = {
       telefone: 62982132222,
       email: 'george@gmail.com',
       tipo: enums.Tipo.TRABALHO
+    },
+    {
+      id: 7,
+      nome: 'Carmem Nonato',
+      telefone: 62982132242,
+      email: 'carmem@gmail.com',
+      tipo: enums.Tipo.TRABALHO
+    },
+    {
+      id: 8,
+      nome: 'Aurélio Souza',
+      telefone: 62987832222,
+      email: 'aurelio@gmail.com',
+      tipo: enums.Tipo.FAMILIA
     }
   ],
   contatoSelecionado: null
