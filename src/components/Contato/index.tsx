@@ -1,8 +1,9 @@
+import { ChangeEvent, useEffect, useState } from 'react'
 import { Tipo } from './style'
 import ContatoState from '../../models/Contato'
 import { useDispatch } from 'react-redux'
 import { editar, limparContatoSelecionado } from '../../store/reducers/contato'
-import { useEffect, useState } from 'react'
+import * as enums from '../../utils/enums/Contato'
 
 type Props = ContatoState
 
@@ -17,27 +18,27 @@ const Contato = ({
   const [alteracao, setAlteracao] = useState({
     nome: nomeOriginal,
     telefone: telefoneOriginal,
-    email: emailOriginal
+    email: emailOriginal,
+    tipo
   })
   useEffect(() => {
-    if (
-      nomeOriginal.length > 0 &&
-      telefoneOriginal.toString.length > 0 &&
-      emailOriginal.length > 0
-    ) {
+    if (!estaEditando) {
       setAlteracao({
         nome: nomeOriginal,
         telefone: telefoneOriginal,
-        email: emailOriginal
+        email: emailOriginal,
+        tipo
       })
     }
-  }, [nomeOriginal, telefoneOriginal, emailOriginal])
+  }, [id, estaEditando])
+
   function cancelarEdicao() {
     setEstaEditando(false)
     setAlteracao({
       nome: nomeOriginal,
       telefone: telefoneOriginal,
-      email: emailOriginal
+      email: emailOriginal,
+      tipo
     })
   }
   const dispatch = useDispatch()
@@ -57,7 +58,7 @@ const Contato = ({
           <button onClick={cancelarEdicao}>Cancelar</button>
           <button
             onClick={() => {
-              dispatch(editar({ ...alteracao, id, tipo }))
+              dispatch(editar({ ...alteracao, id }))
               setEstaEditando(false)
             }}
           >
@@ -98,8 +99,20 @@ const Contato = ({
           />
         </label>
         <label htmlFor={tipo}>
-          <Tipo parametro="modo" tipo={tipo}>
-            {tipo}
+          <Tipo
+            disabled={!estaEditando}
+            parametro="modo"
+            tipo={tipo}
+            onChange={(e) =>
+              setAlteracao((prev) => ({
+                ...prev,
+                tipo: e.target.value as enums.Tipo
+              }))
+            }
+          >
+            <option value={enums.Tipo.FAMILIA}>Família</option>
+            <option value={enums.Tipo.PESSOAL}>Pessoal</option>
+            <option value={enums.Tipo.TRABALHO}>Trabalho</option>
           </Tipo>
         </label>
       </div>

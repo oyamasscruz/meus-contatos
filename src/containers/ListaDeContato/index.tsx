@@ -13,12 +13,11 @@ const CardContato = () => {
       <Container>
         <ul>
           {contatoSelecionadoId && (
-            <Linha
-              parametro="modo"
-              tipo={contatoSelecionadoId.tipo}
-              key={contatoSelecionadoId?.id}
-            >
-              <Contato {...contatoSelecionadoId} />
+            <Linha parametro="modo" tipo={contatoSelecionadoId.tipo}>
+              <Contato
+                key={`${contatoSelecionadoId.id} - ${contatoSelecionadoId}`}
+                {...contatoSelecionadoId}
+              />
             </Linha>
           )}
         </ul>

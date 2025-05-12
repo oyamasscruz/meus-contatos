@@ -41,7 +41,7 @@ export const BotaoVoltar = styled(BotaoEditar)`
   justify-content: center;
 `
 
-export const Tipo = styled.span<TagProps>`
+export const Tipo = styled.select<TagProps>`
   background-color: ${(props) => mudaCorDeFundo(props)};
 `
 
