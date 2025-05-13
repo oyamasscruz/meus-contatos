@@ -1,7 +1,11 @@
+import BotaoAdicionar from './style'
+
 const Adicionar = () => {
-  ;<>
-    <button>+</button>
-  </>
+  return (
+    <>
+      <BotaoAdicionar>+</BotaoAdicionar>
+    </>
+  )
 }
 
 export default Adicionar

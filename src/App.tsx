@@ -3,6 +3,7 @@ import BarraLateral from './containers/BarraLateral'
 import ListaDeContato from './containers/ListaDeContato'
 import { Provider, useSelector } from 'react-redux'
 import store, { RootReducer } from './store'
+import Adicionar from './components/Adicionar'
 
 function Conteudo() {
   const { contatoSelecionado } = useSelector(
@@ -12,6 +13,7 @@ function Conteudo() {
     <Container style={{ display: 'flex' }}>
       <BarraLateral />
       {contatoSelecionado !== null && <ListaDeContato />}
+      {contatoSelecionado === null && <Adicionar />}
     </Container>
   )
 }

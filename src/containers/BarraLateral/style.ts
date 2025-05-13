@@ -18,16 +18,27 @@ function mudaCorDeFundo(props: TagProps): string {
 
 export const BotaoComCor = styled.button<TagProps>`
   background-color: ${(props) => mudaCorDeFundo(props)};
+  padding: 20px;
   cursor: pointer;
+  width: 80%;
+  font-weight: bold;
+  font-size: 24px;
+  height: 100%;
+  border-radius: 16px;
+  border: 1px solid #fff;
+
+  &:hover {
+    box-shadow: 0 2px 8px;
+  }
 `
 
 const Container = styled.aside`
   margin-top: 16px;
   max-width: 90%;
   width: 100%;
-  heigt: 100vh;
+  height: 80vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 8px;
+  grid-gap: 24px;
 `
 export default Container

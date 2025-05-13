@@ -13,6 +13,8 @@ const EstiloGlobal = createGlobalStyle`
 export const Container = styled.div`
   display: grid;
   grid-template-columns: 40% auto;
+  justify-content: spacebetween;
+  margin: 1rem;
 `
 
 export default EstiloGlobal

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import Contato from '../../components/Contato'
 import { RootReducer } from '../../store'
-import Container, { Linha } from './style'
+import Container, { Linha, ListaDeContatos } from './style'
 
 const CardContato = () => {
   const { itens, contatoSelecionado } = useSelector(
@@ -11,7 +11,7 @@ const CardContato = () => {
   return (
     <>
       <Container>
-        <ul>
+        <ListaDeContatos>
           {contatoSelecionadoId && (
             <Linha parametro="modo" tipo={contatoSelecionadoId.tipo}>
               <Contato
@@ -20,7 +20,7 @@ const CardContato = () => {
               />
             </Linha>
           )}
-        </ul>
+        </ListaDeContatos>
       </Container>
     </>
   )

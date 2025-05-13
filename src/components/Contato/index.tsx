@@ -1,5 +1,18 @@
-import { ChangeEvent, useEffect, useState } from 'react'
-import { Tipo } from './style'
+import { useEffect, useState } from 'react'
+import {
+  BotaoCancelar,
+  BotaoEditar,
+  BotaoSalvar,
+  BotaoVoltar,
+  Botoes,
+  Tipo,
+  DadosDoContato,
+  ContainerContato,
+  Nome,
+  Numero,
+  Email,
+  BotaoDeletar
+} from './style'
 import ContatoState from '../../models/Contato'
 import { useDispatch } from 'react-redux'
 import { editar, limparContatoSelecionado } from '../../store/reducers/contato'
@@ -52,28 +65,31 @@ const Contato = ({
     }))
   }
   return (
-    <>
+    <ContainerContato>
       {estaEditando ? (
-        <>
-          <button onClick={cancelarEdicao}>Cancelar</button>
-          <button
+        <Botoes>
+          <BotaoCancelar onClick={cancelarEdicao}>Cancelar</BotaoCancelar>
+          <BotaoSalvar
             onClick={() => {
               dispatch(editar({ ...alteracao, id }))
               setEstaEditando(false)
             }}
           >
             Salvar
-          </button>
-        </>
+          </BotaoSalvar>
+        </Botoes>
       ) : (
-        <>
-          <button onClick={ocultacontato}>&lt;</button>
-          <button onClick={() => setEstaEditando(true)}>Editar</button>
-        </>
+        <Botoes>
+          <BotaoVoltar onClick={ocultacontato}>&lt;</BotaoVoltar>
+          <BotaoEditar onClick={() => setEstaEditando(true)}>
+            Editar
+          </BotaoEditar>
+        </Botoes>
       )}
-      <div>
+      <DadosDoContato estaEditando={estaEditando}>
         <label htmlFor={nomeOriginal}>
-          <input
+          <Nome
+            estaEditando={estaEditando}
             type="text"
             disabled={!estaEditando}
             onChange={(evento) => atualizaCampo('nome', evento.target.value)}
@@ -81,7 +97,8 @@ const Contato = ({
           />
         </label>
         <label>
-          <input
+          <Numero
+            estaEditando={estaEditando}
             type="tel"
             disabled={!estaEditando}
             onChange={(evento) =>
@@ -91,7 +108,8 @@ const Contato = ({
           />
         </label>
         <label htmlFor={emailOriginal}>
-          <input
+          <Email
+            estaEditando={estaEditando}
             type="email"
             disabled={!estaEditando}
             value={alteracao.email}
@@ -115,8 +133,9 @@ const Contato = ({
             <option value={enums.Tipo.TRABALHO}>Trabalho</option>
           </Tipo>
         </label>
-      </div>
-    </>
+        <BotaoDeletar estaEditando={estaEditando}>Deletar</BotaoDeletar>
+      </DadosDoContato>
+    </ContainerContato>
   )
 }
 
