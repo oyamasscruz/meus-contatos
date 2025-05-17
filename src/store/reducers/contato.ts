@@ -81,14 +81,42 @@ const contatoSlice = createSlice({
         state.itens[indexDoContato] = action.payload
       }
     },
-    selecionarContato: (state, action: PayloadAction<number>) => {
+    selecionarContato: (state, action: PayloadAction<number | null>) => {
       state.contatoSelecionado = action.payload
     },
-    limparContatoSelecionado: (state) => {
-      state.contatoSelecionado = null
+    deletarContatoSelecionado: (state, action: PayloadAction<number>) => {
+      state.itens = [
+        ...state.itens.filter((contato) => contato.id !== action.payload)
+      ]
+    },
+    adicionarContato: (state, action: PayloadAction<Omit<Contato, 'id'>>) => {
+      const maiorId = state.itens.reduce(
+        (max, item) => (item.id > max ? item.id : max),
+        0
+      )
+      const novoId = maiorId + 1
+      const novoContatoComID: Contato = {
+        id: novoId,
+        ...action.payload
+      }
+      const contatoJaExiste = state.itens.find(
+        (contato) =>
+          contato.nome === novoContatoComID.nome ||
+          contato.telefone === novoContatoComID.telefone ||
+          contato.email === novoContatoComID.email
+      )
+      if (contatoJaExiste) {
+        alert('Um contato com esse nome, telefone ou email já está cadastrado.')
+      } else {
+        state.itens.push(novoContatoComID)
+      }
     }
   }
 })
-export const { editar, selecionarContato, limparContatoSelecionado } =
-  contatoSlice.actions
+export const {
+  editar,
+  selecionarContato,
+  deletarContatoSelecionado,
+  adicionarContato
+} = contatoSlice.actions
 export default contatoSlice.reducer

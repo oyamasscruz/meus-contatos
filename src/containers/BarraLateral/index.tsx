@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import Container, { BotaoComCor } from './style'
 import { RootReducer } from '../../store'
-import { editar, selecionarContato } from '../../store/reducers/contato'
+import { selecionarContato } from '../../store/reducers/contato'
 
 const BarraLateral = () => {
   const { itens } = useSelector((state: RootReducer) => state.contato)
