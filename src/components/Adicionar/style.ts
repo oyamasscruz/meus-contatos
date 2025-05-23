@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
+import { Link } from 'react-router-dom'
 
-const BotaoAdicionar = styled.button`
+const BotaoAdicionar = styled(Link)`
   margin-top: 20px;
   margin-left: 20px;
   padding: 24px;
   height: 20px;
+  text-decoration: none;
   width: 20px;
   border-radius: 50%;
   display: flex;

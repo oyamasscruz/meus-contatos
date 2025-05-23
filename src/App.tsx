@@ -1,27 +1,25 @@
 import EstiloGlobal, { Container } from './styles'
-import BarraLateral from './containers/BarraLateral'
-import ListaDeContato from './containers/ListaDeContato'
-import { Provider, useSelector } from 'react-redux'
-import store, { RootReducer } from './store'
-import Adicionar from './components/Adicionar'
+import { Provider } from 'react-redux'
+import store from './store'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Cadastro from './pages/Cadastro'
+import Home from './pages/Home'
 
-function Conteudo() {
-  const { contatoSelecionado } = useSelector(
-    (state: RootReducer) => state.contato
-  )
-  return (
-    <Container style={{ display: 'flex' }}>
-      <BarraLateral />
-      {contatoSelecionado !== null && <ListaDeContato />}
-      {contatoSelecionado === null && <Adicionar />}
-    </Container>
-  )
-}
+const rotas = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />
+  },
+  {
+    path: '/novo',
+    element: <Cadastro />
+  }
+])
 function App() {
   return (
     <Provider store={store}>
       <EstiloGlobal />
-      <Conteudo />
+      <RouterProvider router={rotas} />
     </Provider>
   )
 }

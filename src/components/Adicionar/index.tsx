@@ -3,7 +3,7 @@ import BotaoAdicionar from './style'
 const Adicionar = () => {
   return (
     <>
-      <BotaoAdicionar>+</BotaoAdicionar>
+      <BotaoAdicionar to="/novo">+</BotaoAdicionar>
     </>
   )
 }
