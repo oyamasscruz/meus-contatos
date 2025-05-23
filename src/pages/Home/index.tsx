@@ -1,7 +1,11 @@
 import Conteudo from '../../containers/Conteudo'
 
 const Home = () => {
-  return <Conteudo />
+  return (
+    <>
+      <Conteudo />
+    </>
+  )
 }
 
 export default Home

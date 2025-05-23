@@ -63,6 +63,7 @@ const Formulario = () => {
       setNovoEmail('')
       setNovoTipo(enums.Tipo.FAMILIA)
     }
+    navigate('/')
   }
   return (
     <Section>

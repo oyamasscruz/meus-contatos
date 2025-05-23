@@ -33,6 +33,8 @@ export const BotaoComCor = styled.button<TagProps>`
 `
 
 const Container = styled.aside`
+  z-index: 1;
+  position: relative;
   margin-top: 16px;
   max-width: 90%;
   width: 100%;
